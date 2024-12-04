@@ -16,3 +16,15 @@ def test_person_password():
     assert p.password == "5678"
 
 
+def test_person_balance():
+    p = Person("John", "1234", 100.0)
+    assert p.balance == 100.0
+    p.balance = 200.0
+    assert p.balance == 200.0
+
+
+def test_person_balance_exception():
+    p = Person("John", "1234", 100.0)
+    with pytest.raises(ValueError):
+        p.balance = "abc"
+    assert p.balance == -1.0
